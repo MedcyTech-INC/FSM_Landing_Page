@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  fieldcrux-lp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fieldcrux-lp
+    restart: unless-stopped
+    ports:
+      # Expose on port 3005 on the host to avoid conflicts
+      - "3005:3000"
+    environment:
+      - NODE_ENV=production
