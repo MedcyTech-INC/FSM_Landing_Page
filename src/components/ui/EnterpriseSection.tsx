@@ -12,11 +12,7 @@ export default function EnterpriseSection() {
   ];
 
   return (
-    <section className="py-24 sm:py-28 bg-gradient-to-b from-[#EAF4FD] via-[#F2F7FE] to-[#E9F3FC] relative overflow-hidden" id="enterprise">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand-blue/10 rounded-full blur-[140px] pointer-events-none"></div>
-      <div className="absolute bottom-10 -left-20 w-96 h-96 bg-electric-cyan/15 rounded-full blur-[140px] pointer-events-none"></div>
-
+    <section className="py-24 sm:py-28 bg-transparent relative overflow-hidden" id="enterprise">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block px-4 py-1.5 bg-blue-500/10 text-brand-blue text-xs font-escucha uppercase tracking-widest font-bold rounded-full mb-4 border border-blue-200/80 shadow-xs">

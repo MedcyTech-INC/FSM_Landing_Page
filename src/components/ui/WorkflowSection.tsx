@@ -28,11 +28,7 @@ export default function WorkflowSection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-[#E9F3FC] via-[#E0EDF9] to-[#EAF4FD] relative overflow-hidden" id="workflow">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-10 w-80 h-80 bg-electric-cyan/15 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none"></div>
-
+    <section className="py-12 sm:py-16 md:py-20 bg-transparent relative overflow-hidden" id="workflow">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-block px-3.5 py-1 bg-blue-500/10 text-brand-blue text-[11px] font-escucha uppercase tracking-widest font-bold rounded-full mb-3 border border-blue-200/80 shadow-xs">

@@ -9,15 +9,24 @@
   --font-serif: var(--font-flaviotte), var(--font-culture), Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --color-background: #EFF6FF;
+  --color-background: #FDFEFF;
   --color-surface: #FFFFFF;
-  --color-ice-blue: #E2F0FD;
-  --color-soft-blue: #D6EBFE;
+  --color-ice-blue: #EAF5FF;
+  --color-soft-blue: #D8EEFF;
   --color-electric-cyan: #08D5F5;
   --color-brand-blue: #1677FF;
   --color-dark-navy: #101C30;
   --color-primary-text: #14243A;
   --color-secondary-text: #5D6F86;
+
+  /* Fieldcrux Soft Aurora Palette */
+  --color-aurora-white: #FDFEFF;
+  --color-aurora-ice: #EAF5FF;
+  --color-aurora-sky: #D8EEFF;
+  --color-aurora-aqua: #C8F0EB;
+  --color-aurora-cyan: #BDECF7;
+  --color-aurora-powder: #9CCDF5;
+  --color-aurora-deep: #1468C8;
 
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -31,6 +40,53 @@
     100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes auroraDrift1 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(24px, 18px, 0) scale(1.05) rotate(2deg);
+    }
+  }
+
+  @keyframes auroraDrift2 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(-20px, 22px, 0) scale(1.04) rotate(-2deg);
+    }
+  }
+
+  @keyframes auroraDrift3 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(22px, -18px, 0) scale(1.05) rotate(2deg);
+    }
+  }
+
+  @keyframes auroraDrift4 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(-24px, -20px, 0) scale(1.04) rotate(-2deg);
+    }
+  }
+
+  @keyframes auroraDriftWash {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: translate3d(0, 15px, 0) scale(1.03);
+      opacity: 1;
     }
   }
 }
@@ -50,8 +106,92 @@
 }
 
 @layer utilities {
+  /* Soft Aurora Background Canvas */
+  .bg-aurora-canvas {
+    background-color: #FDFEFF;
+    background-image:
+      /* Top-left: very soft aqua & mint-blue glow */
+      radial-gradient(
+        ellipse 65% 55% at 0% 0%,
+        rgba(200, 240, 235, 0.36) 0%,
+        rgba(189, 236, 247, 0.20) 28%,
+        rgba(234, 245, 255, 0.08) 55%,
+        transparent 75%
+      ),
+      /* Top-right: large soft sky-blue glow */
+      radial-gradient(
+        ellipse 60% 55% at 100% 0%,
+        rgba(156, 205, 245, 0.28) 0%,
+        rgba(216, 238, 255, 0.18) 32%,
+        transparent 70%
+      ),
+      /* Top-center: pale cyan-blue atmospheric wash */
+      radial-gradient(
+        ellipse 55% 35% at 50% 0%,
+        rgba(189, 236, 247, 0.20) 0%,
+        rgba(234, 245, 255, 0.14) 38%,
+        transparent 70%
+      ),
+      /* Bottom-left: diffused powder-blue shape with subtle deeper blue core */
+      radial-gradient(
+        ellipse 65% 60% at 0% 100%,
+        rgba(20, 104, 200, 0.11) 0%,
+        rgba(67, 145, 235, 0.17) 22%,
+        rgba(156, 205, 245, 0.22) 44%,
+        rgba(200, 240, 235, 0.10) 65%,
+        transparent 85%
+      ),
+      /* Bottom-right: subtle pale cyan-blue glow */
+      radial-gradient(
+        ellipse 60% 55% at 100% 100%,
+        rgba(189, 236, 247, 0.24) 0%,
+        rgba(216, 238, 255, 0.16) 34%,
+        transparent 72%
+      ),
+      /* Center: luminous radiant white highlight dominating ~80% of view */
+      radial-gradient(
+        ellipse 85% 75% at 50% 46%,
+        rgba(253, 254, 255, 0.99) 0%,
+        rgba(248, 252, 255, 0.90) 38%,
+        rgba(234, 245, 255, 0.35) 68%,
+        transparent 100%
+      ),
+      /* Base: almost-white canvas with very subtle icy-blue tint */
+      linear-gradient(
+        135deg,
+        #F9FDFF 0%,
+        #FEFFFF 48%,
+        #F2F8FE 100%
+      );
+  }
+
+  .animate-aurora-drift-1 {
+    animation: auroraDrift1 26s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-aurora-drift-2 {
+    animation: auroraDrift2 30s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-aurora-drift-3 {
+    animation: auroraDrift3 34s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-aurora-drift-4 {
+    animation: auroraDrift4 28s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-aurora-drift-wash {
+    animation: auroraDriftWash 22s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
   .bg-hero-gradient {
-    background-image: linear-gradient(145deg, #EFF6FF 0%, #E3F0FD 50%, #D8ECFD 100%);
+    background-image: linear-gradient(145deg, #F8FDFF 0%, #F1F7FD 50%, #E8F3FD 100%);
   }
 
   .bg-cta-gradient {
@@ -59,15 +199,34 @@
   }
 
   .glass-panel {
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    box-shadow: 0 12px 40px rgba(45, 103, 166, 0.07);
   }
 
   .glass-panel-dark {
-    background-color: rgba(16, 28, 48, 0.8);
+    background-color: rgba(16, 28, 48, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .card-aurora {
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 14px 42px rgba(45, 103, 166, 0.07);
+  }
+
+  .card-aurora-subtle {
+    background-color: rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(216, 238, 255, 0.65);
+    box-shadow: 0 8px 30px rgba(45, 103, 166, 0.05);
   }
 
   .text-gradient {
@@ -92,6 +251,16 @@
 
   .font-flaviotte {
     font-family: var(--font-flaviotte), Georgia, serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-drift-1,
+  .animate-aurora-drift-2,
+  .animate-aurora-drift-3,
+  .animate-aurora-drift-4,
+  .animate-aurora-drift-wash {
+    animation: none !important;
   }
 }
 

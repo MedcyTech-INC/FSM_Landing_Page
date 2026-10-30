@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -112,7 +113,23 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${nohemi.variable} ${culture.variable} ${escucha.variable} ${flaviotte.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col font-sans">{children}</body>
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-sans">
+        <Script
+          id="scroll-restoration-reset"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof history !== "undefined" && "scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+              }
+              if (typeof window !== "undefined" && !window.location.hash && window.scrollY > 0) {
+                window.scrollTo(0, 0);
+              }
+            `,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

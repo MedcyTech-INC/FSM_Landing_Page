@@ -11,11 +11,7 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section className="py-24 sm:py-28 bg-gradient-to-b from-[#DCEEFD] via-[#E8F2FC] to-[#EDF5FE] relative overflow-hidden" id="problem">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-10 left-0 w-80 h-80 bg-electric-cyan/15 rounded-full blur-[100px] pointer-events-none"></div>
-
+    <section className="py-24 sm:py-28 bg-transparent relative overflow-hidden" id="problem">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block px-4 py-1.5 bg-rose-500/10 text-rose-600 text-xs font-escucha uppercase tracking-widest font-bold rounded-full mb-4 border border-rose-200/80 shadow-xs">
